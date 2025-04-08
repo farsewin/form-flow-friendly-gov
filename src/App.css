@@ -1,3 +1,4 @@
+
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -41,6 +42,51 @@
   color: #888;
 }
 
-/* .card:hover {
-  background: #f0f0f0;
-} */
+/* RTL Support */
+[dir="rtl"] .space-x-6 {
+  --tw-space-x-reverse: 1;
+}
+
+[dir="rtl"] .ml-2 {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+[dir="rtl"] .gap-2 > * + * {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}
+
+/* Add a font class for Arabic text */
+.font-arabic {
+  font-family: 'Tajawal', 'Noto Sans Arabic', sans-serif;
+}
+
+/* Add specific RTL overrides as needed */
+[dir="rtl"] .mr-2 {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Global fixes for form elements in RTL mode */
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  text-align: right;
+}
+
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .justify-end {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .justify-start {
+  justify-content: flex-end;
+}
