@@ -45,7 +45,8 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  const [language, setLanguage] = useState<Language>("en");
+  // Default to Arabic language
+  const [language, setLanguage] = useState<Language>("ar");
 
   const t = (key: string): string => {
     const translation = translations[language][key];
