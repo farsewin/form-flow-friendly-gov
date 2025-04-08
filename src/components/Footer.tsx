@@ -5,7 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 const Footer = () => {
   const { t, language } = useLanguage();
   
-  // Force Arabic language
+  // All content in Arabic
   const arabicText = {
     copyright: "© {year} خدمات الحكومة الرقمية",
     disclaimer: "هذا تطبيق تجريبي. لا تتم معالجة أو تخزين أي بيانات فعلية.",
