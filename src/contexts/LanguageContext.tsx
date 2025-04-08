@@ -45,14 +45,13 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | null>(null);
 
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
-  // Always use Arabic language only
-  const [language, setLanguage] = useState<Language>("ar");
+  // Default to English language
+  const [language, setLanguage] = useState<Language>("en");
 
   const t = (key: string): string => {
-    // Always return Arabic translations regardless of language setting
-    const translation = translations["ar"][key];
+    const translation = translations[language][key];
     if (!translation) {
-      console.warn(`Translation missing for key: ${key} in language: ar`);
+      console.warn(`Translation missing for key: ${key} in language: ${language}`);
       return key;
     }
     return translation.replace("{year}", new Date().getFullYear().toString());
@@ -60,7 +59,7 @@ export const LanguageProvider = ({ children }: { children: ReactNode }) => {
 
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      <div dir="rtl" className="font-arabic">
+      <div dir={language === "ar" ? "rtl" : "ltr"} className={language === "ar" ? "font-arabic" : ""}>
         {children}
       </div>
     </LanguageContext.Provider>

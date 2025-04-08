@@ -3,7 +3,6 @@ import FormContainer from "@/components/FormContainer";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import AccessibilityWidget from "@/components/AccessibilityWidget";
 
 const Index = () => {
   return (
@@ -14,7 +13,6 @@ const Index = () => {
           <FormContainer />
         </main>
         <Footer />
-        <AccessibilityWidget />
       </div>
     </LanguageProvider>
   );

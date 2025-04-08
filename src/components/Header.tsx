@@ -6,7 +6,11 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const { theme, setTheme } = useTheme();
-  const { t } = useLanguage();
+  const { language, setLanguage, t } = useLanguage();
+
+  const toggleLanguage = () => {
+    setLanguage(language === "en" ? "ar" : "en");
+  };
 
   return (
     <header className="border-b border-border sticky top-0 bg-background z-10">
@@ -22,10 +26,29 @@ const Header = () => {
           <Button
             variant="ghost"
             size="icon"
-            aria-label={theme === "dark" ? "التبديل إلى السمة الفاتحة" : "التبديل إلى السمة الداكنة"}
+            aria-label={t(theme === "dark" ? "header.theme.light" : "header.theme.dark")}
             onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
           >
             {theme === "dark" ? <SunIcon size={20} /> : <MoonIcon size={20} />}
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="icon"
+            className="ml-2"
+            onClick={toggleLanguage}
+            aria-label={`Switch to ${language === "en" ? "Arabic" : "English"}`}
+          >
+            <Globe size={20} />
+          </Button>
+          
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={toggleLanguage}
+            className="text-sm hidden sm:flex"
+          >
+            {t("header.language")}
           </Button>
         </div>
       </div>
