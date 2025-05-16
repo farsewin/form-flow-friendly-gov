@@ -1,14 +1,15 @@
-
 import { ThemeProvider } from "@/hooks/use-theme";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import FormContainer from "@/components/FormContainer";
 import AccessibilityWidget from "@/components/AccessibilityWidget";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, FileText, Shield, Clock } from "lucide-react";
+import { useNavigate } from "react-router-dom"; // Assuming you're using Next.js
 
 const Index = () => {
+  const navigate = useNavigate();
+
   return (
     <ThemeProvider defaultTheme="light">
       <div className="min-h-screen flex flex-col">
@@ -27,12 +28,7 @@ const Index = () => {
                 <Button 
                   size="lg" 
                   className="bg-white text-gov-blue hover:bg-white/90"
-                  onClick={() => {
-                    const formElement = document.getElementById("form-section");
-                    if (formElement) {
-                      formElement.scrollIntoView({ behavior: "smooth" });
-                    }
-                  }}
+                  onClick={() => navigate("/application-form")} // Navigate to ApplicationFormPage
                 >
                   Start Application <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
@@ -85,11 +81,6 @@ const Index = () => {
                 </CardContent>
               </Card>
             </div>
-          </section>
-          
-          <section id="form-section" className="gov-container mb-12">
-            <h2 className="text-2xl font-bold text-center mb-8">Application Form</h2>
-            <FormContainer />
           </section>
         </main>
         
